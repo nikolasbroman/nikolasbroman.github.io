@@ -4,8 +4,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="minireset.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/minireset.min.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
     <title>Nikolas Broman</title>
   </head>
@@ -21,10 +21,10 @@
       </div>
       <nav>
         <ul>
-          <li><a href="#hello">Hello</a>
-          </li><li><a href="#github">GitHub</a>
-          </li><li><a href="#my-story">My Story</a>
-          </li><li><a href="#contact-me">Contact Me</a></li>
+          <li><a class="scroll-to-hello" href="#">Hello</a>
+          </li><li><a class="scroll-to-github" href="#">GitHub</a>
+          </li><li><a class="scroll-to-my-story" href="#">My Story</a>
+          </li><li><a class="scroll-to-contact-me" href="#">Contact Me</a></li>
         </ul>
       </nav>
       <div class="clearfix"></div>
@@ -34,7 +34,7 @@
     <section id="headline">
       <div class="container">
         <h1>A Future Ruby on Rails Specialist</h1>
-        <p>hire_me ? <a href="#contact-me">contact_me</a> : <a href="#my-story">read_my_story</a></p>
+        <p>hire_me ? <a class="scroll-to-contact-me" href="#">contact_me</a> : <a class="scroll-to-my-story" href="#">read_my_story</a></p>
       </div>
     </section>
 
@@ -128,7 +128,8 @@
       </div>
     </footer>
         
-    <script type="text/javascript" src="bg-image-size.js"></script>
+    <script type="text/javascript" src="js/bg-image-size.js"></script>
+    <script type="text/javascript" src="js/smooth-scrolling.js"></script>
   </body>
 
 </html>
