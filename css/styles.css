@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  background: #99e;
+  background: #7E92AC;
   background-image: url("../images/bg.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -41,9 +41,21 @@ a:hover {
 /* Header, Navigation */
 
 header {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
   background: #000;
   color: #fff;
   padding: 1.4rem;
+  transition: transform 0.5s;
+}
+
+.hide {
+  transform: translate3d(0, -100%, 0);
+}
+
+.show {
+  transform: none;
 }
 
 .header-brand {
@@ -83,7 +95,8 @@ nav li a:hover {
 
 
 #headline {
-  padding: 4.2rem 0;;
+  padding-top: calc(1.4rem * 4 + 4.2rem);
+  padding-bottom: 4.2rem;
   background: rgba(238,238,238,0.5);
 }
 

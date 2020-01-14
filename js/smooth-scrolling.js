@@ -1,17 +1,25 @@
+let currentlySmoothScrolling = false;
+let scrollTimeCounter = 0;
+let alreadyCounting = false;
+
 function smoothScroll(target, duration) {
-  var target = document.querySelector(target);
-  // var headerHeight = document.getElementsByTagName("header")[0].offsetHeight;
-  // if header is fixed, then subtract headerHeight from targetPosition
-  var targetPosition = target.getBoundingClientRect().top;
-  var startPosition = window.pageYOffset;
-  var startTime = null;
+  currentlySmoothScrolling = true;
+  scrollTimeCounter = 0;
+
+  let headerHeight = document.getElementsByTagName("header")[0].offsetHeight;
+  let targetPosition = document.querySelector(target)
+                               .getBoundingClientRect()
+                               .top
+                               - headerHeight;
+  let startPosition = window.pageYOffset;
+  let startTime = null;
 
   function animation(currentTime) {
     if (startTime === null) {
       startTime = currentTime;
     }
-    var timeElapsed = currentTime - startTime;
-    var run = ease(timeElapsed, startPosition, targetPosition, duration);
+    let timeElapsed = currentTime - startTime;
+    let run = ease(timeElapsed, startPosition, targetPosition, duration);
     window.scrollTo(0, run);
     if (timeElapsed < duration) {
       requestAnimationFrame(animation);
@@ -25,33 +33,49 @@ function smoothScroll(target, duration) {
     // from gizma.com/easing
   };
 
+  if (!alreadyCounting) {
+    alreadyCounting = true;
+    countToScrollTime();
+  }
+
   requestAnimationFrame(animation);
 }
 
-var scrollTime = 700;
+function countToScrollTime() {
+    setTimeout( () => {
+      scrollTimeCounter += 100;
+      console.log("scrollTimeCounter = " + scrollTimeCounter);
+      if (scrollTimeCounter > scrollTime) {
+        currentlySmoothScrolling = false;
+        alreadyCounting = false;
+      } else {
+        countToScrollTime();
+      }
+    }, 100);
+}
 
-var hello = document.querySelector(".scroll-to-hello");
-hello.addEventListener("click", function() {
+let scrollTime = 500;
+
+let hello = document.querySelector(".scroll-to-hello");
+hello.addEventListener("click", () => {
   smoothScroll("#hello", scrollTime);
 });
 
-var github = document.querySelector(".scroll-to-github");
-github.addEventListener("click", function() {
+let github = document.querySelector(".scroll-to-github");
+github.addEventListener("click", () => {
   smoothScroll("#github", scrollTime);
 });
 
-var myStoryList = document.querySelectorAll(".scroll-to-my-story");
+let myStoryList = document.querySelectorAll(".scroll-to-my-story");
 for (const myStory of myStoryList) {
-  myStory.addEventListener("click", function() {
+  myStory.addEventListener("click", () => {
     smoothScroll("#my-story", scrollTime);
   });
 }
 
-var contactMeList = document.querySelectorAll(".scroll-to-contact-me");
+let contactMeList = document.querySelectorAll(".scroll-to-contact-me");
 for (const contactMe of contactMeList) {
-  contactMe.addEventListener("click", function() {
+  contactMe.addEventListener("click", () => {
     smoothScroll("#contact-me", scrollTime);
   });
 }
-
-
