@@ -81,13 +81,13 @@ nav li:last-child {
   padding-right: 0;
 }
 
-nav li a,
-nav li a:visited {
+header a,
+header a:visited {
   color: #fff;
   text-decoration: none;
 }
 
-nav li a:hover {
+header a:hover {
   color: #be0004;
 }
 
@@ -220,7 +220,7 @@ h1 {
 }
 
 hr {
-  border: 1px solid #808080;
+  border-top: 1px solid #808080;
   margin: 2.8rem 0 1.4rem;
 }
 
