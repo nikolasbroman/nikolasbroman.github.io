@@ -1,5 +1,12 @@
-/* Hides header on scroll down,
-shows header on scroll up. */
+/* Scrolls smoothly to a page section
+when a navigation link is clicked.
+
+Heavily borrows from this tutorial:
+https://www.youtube.com/watch?v=oUSvlrDTLi4
+
+Except for countToScrollTime(), which I made
+to make sure that the fixed header doesn't hide on sroll down,
+like it normally would (see the last script).*/
 
 let currentlySmoothScrolling = false;
 let scrollTimeCounter = 0;
