@@ -219,6 +219,11 @@ h1 {
   margin-bottom: 1.4rem;
 }
 
+hr {
+  border: 1px solid #808080;
+  margin: 2.8rem 0 1.4rem;
+}
+
 /* Contact Me */
 
 #contact-me .container {
