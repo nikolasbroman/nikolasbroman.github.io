@@ -52,11 +52,7 @@ header {
 }
 
 .hide {
-  transform: translate3d(0, -100%, 0);
-}
-
-.show {
-  transform: none;
+  transform: translate(0, -100%);
 }
 
 .header-brand {
@@ -67,7 +63,7 @@ nav {
   float: right;
   font-size: 1.25rem;
   line-height: calc(2.8 / 1.25);
-  /* if last value == font-size
+  /* if calc's last value == font-size
      and .header-brand is two lines long
      then nav is vertically in the middle */
 }
@@ -94,7 +90,6 @@ header a:hover {
 
 /* Headline */
 
-
 #headline {
   padding-top: calc(1.4rem * 4 + 4.2rem);
   padding-bottom: 4.2rem;
@@ -104,7 +99,6 @@ header a:hover {
 #headline .container {
   padding: 0 1.4rem;
 }
-
 
 #headline p {
   margin-bottom: 0;
@@ -236,21 +230,15 @@ hr {
 
 /* Footer */
 
-footer {
-
-}
-
 footer .container {
   background: #000;
   color: #fff;
-
   text-align: center;
   margin-top: 4.2rem;
   padding-top: 1.4rem;
   padding-bottom: 1.4rem;
   border-radius: 25% 25% 0 0;
   border-radius: 50% 50% 0 0;
-
 }
 
 footer p {
@@ -324,9 +312,6 @@ footer p {
 }
 
 
-
-
-
 @media (max-width: 750px) {
   html {
     font-size: 19px;
@@ -397,5 +382,4 @@ footer p {
   .row:last-child .col:last-child {
     display: none;
   }
-
 }
