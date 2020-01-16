@@ -1,3 +1,6 @@
+/* Hides header on scroll down,
+shows header on scroll up. */
+
 let currentlySmoothScrolling = false;
 let scrollTimeCounter = 0;
 let alreadyCounting = false;

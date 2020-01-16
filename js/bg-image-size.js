@@ -1,3 +1,6 @@
+/* Changes background image size
+according to browser resolution */
+
 let width = window.innerWidth;
 let height = window.innerHeight;
 let body = document.body;

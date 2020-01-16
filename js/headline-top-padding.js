@@ -1,3 +1,6 @@
+/* Adjusts padding-top for #headline,
+because fixed header's height is unpredictable. */
+
 function adjustHeadlineTopPadding() {
   let headline = document.getElementById("headline");
   let headerHeight = document.getElementsByTagName("header")[0].offsetHeight;
