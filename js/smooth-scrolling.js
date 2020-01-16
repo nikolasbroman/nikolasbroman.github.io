@@ -4,9 +4,20 @@ when a navigation link is clicked.
 Heavily borrows from this tutorial:
 https://www.youtube.com/watch?v=oUSvlrDTLi4
 
-Except for countToScrollTime(), which I made
-to make sure that the fixed header doesn't hide on sroll down,
-like it normally would (see the last script).*/
+Except for the following functions, which I made 100% from scratch:
+
+- countToScrollTime(), which makes sure that
+the fixed header doesn't hide on sroll down, like it normally would
+(see the script hide-show-header-on-scroll.js).
+It disables hiding the header until the smoothScroll() finishes.
+
+- checkForExtraHeightAboveElement(), which makes sure that 
+scrolling is smooth, even if the target element's top position is lower than
+the viewport's top position. Otherwise this whole script would try to
+scroll lower than actually possible and would abruptly stop at the bottom.
+Try clicking on "Contact Me" to notice the non-abrupt smoothness.
+
+*/
 
 let currentlySmoothScrolling = false;
 let scrollTimeCounter = 0;
@@ -20,7 +31,29 @@ function smoothScroll(target, duration) {
   let targetPosition = document.querySelector(target)
                                .getBoundingClientRect()
                                .top
-                               - headerHeight;
+                               - headerHeight
+                               + 1;
+
+  if (target === "#headline") {
+    targetPosition += headerHeight;
+  }
+
+  function checkForExtraHeightAboveElement() {
+    let bodyRect = document.body.getBoundingClientRect();
+    let bodyAbsoluteBottom = bodyRect.bottom - bodyRect.top;
+    let targetRect = document.querySelector(target).getBoundingClientRect();
+    let targetAbsoluteTop = targetRect.top - bodyRect.top;
+    let windowHeight = window.innerHeight;
+    let distanceFromBodyBottomToTargetTop = bodyAbsoluteBottom - targetAbsoluteTop; 
+    let extraHeight = windowHeight - distanceFromBodyBottomToTargetTop - headerHeight;
+
+    if (extraHeight > 0) {
+      targetPosition -= extraHeight;
+    }
+  }
+
+  checkForExtraHeightAboveElement();
+
   let startPosition = window.pageYOffset;
   let startTime = null;
 
@@ -54,7 +87,6 @@ function smoothScroll(target, duration) {
 function countToScrollTime() {
     setTimeout( () => {
       scrollTimeCounter += 100;
-      console.log("scrollTimeCounter = " + scrollTimeCounter);
       if (scrollTimeCounter > scrollTime) {
         currentlySmoothScrolling = false;
         alreadyCounting = false;
@@ -65,6 +97,11 @@ function countToScrollTime() {
 }
 
 let scrollTime = 500;
+
+let headline = document.querySelector(".scroll-to-headline");
+headline.addEventListener("click", () => {
+  smoothScroll("#headline", scrollTime);
+});
 
 let hello = document.querySelector(".scroll-to-hello");
 hello.addEventListener("click", () => {
